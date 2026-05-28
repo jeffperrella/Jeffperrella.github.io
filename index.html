@@ -97,7 +97,7 @@
         let currentCategory = '';
         let currentRoutine = null;
 
-        // ROUTINE MATRIX WITH THE NEW DEVANEY LOCATION
+        // FIXED: Category strings map exactly to button triggers now
         const routines = [
             { 
                 id: 1, 
@@ -167,8 +167,10 @@
 
             let routine = routines.find(r => r.category === cat);
 
-            document.getElementById('suggested-name').innerText = routine.name;
-            document.getElementById('start-suggested-btn').onclick = () => startWorkout(routine);
+            if (routine) {
+                document.getElementById('suggested-name').innerText = routine.name;
+                document.getElementById('start-suggested-btn').onclick = () => startWorkout(routine);
+            }
         }
 
         function startWorkout(routine) {
